@@ -80,9 +80,7 @@ typedef clock_t CORE_TICKS;
         Initialize these strings per platform
 */
 #ifndef COMPILER_VERSION
-#if defined(__clang__)
-#define COMPILER_VERSION __VERSION__
-#elif defined(__GNUC__)
+#ifdef __GNUC__
 #define COMPILER_VERSION "GCC"__VERSION__
 #else
 #define COMPILER_VERSION "Please put compiler version here (e.g. gcc 4.1)"

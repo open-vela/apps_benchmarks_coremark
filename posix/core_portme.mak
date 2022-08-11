@@ -84,10 +84,7 @@ PORT_CLEAN = *$(OEXT)
 
 $(OPATH)%$(OEXT) : %.c
 	$(CC) $(CFLAGS) $(XCFLAGS) $(COUT) $< $(OBJOUT) $@
-
-$(OPATH)$(PORT_DIR)/%$(OEXT) : posix/%.c
-	$(CC) $(CFLAGS) $(XCFLAGS) $(COUT) $< $(OBJOUT) $@
-
+	
 endif
 
 # Target: port_prebuild
