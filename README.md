@@ -21,14 +21,14 @@ For cross compile platforms please adjust `core_portme.mak`, `core_portme.h` (an
 ~~~
 
 ## Make Targets
-`run` - Default target, creates `run1.log` and `run2.log`.
-`run1.log` - Run the benchmark with performance parameters, and output to `run1.log`
-`run2.log` - Run the benchmark with validation parameters, and output to `run2.log`
-`run3.log` - Run the benchmark with profile generation parameters, and output to `run3.log`
-`compile` - compile the benchmark executable 
-`link` - link the benchmark executable
-`check` - test MD5 of sources that may not be modified
-`clean` - clean temporary files
+* `run` - Default target, creates `run1.log` and `run2.log`.
+* `run1.log` - Run the benchmark with performance parameters, and output to `run1.log`
+* `run2.log` - Run the benchmark with validation parameters, and output to `run2.log`
+* `run3.log` - Run the benchmark with profile generation parameters, and output to `run3.log`
+* `compile` - compile the benchmark executable 
+* `link` - link the benchmark executable
+* `check` - test MD5 of sources that may not be modified
+* `clean` - clean temporary files
 
 ### Make flag: `ITERATIONS` 
 By default, the benchmark will run between 10-100 seconds. To override, use `ITERATIONS=N`
@@ -82,7 +82,7 @@ The above will compile the benchmark for a performance run and 1000 iterations. 
 Use `XCFLAGS=-DMULTITHREAD=N` where N is number of threads to run in parallel. Several implementations are available to execute in multiple contexts, or you can implement your own in `core_portme.c`.
 
 ~~~
-% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD -lpthread"
+% make XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD -pthread"
 ~~~
 
 The above will compile the benchmark for execution on 4 cores, using POSIX Threads API. Forking is also supported:
@@ -91,7 +91,7 @@ The above will compile the benchmark for execution on 4 cores, using POSIX Threa
 % make XCFLAGS="-DMULTITHREAD=4 -DUSE_FORK"
 ~~~
 
-Note: linking may fail on the previous command if your linker does not automatically add the `pthread` library. If you encounter `undefined reference` errors, please modify the `core_portme.mak` file for your platform, (e.g. `linux/core_portme.mak`) and add `-lpthread` to the `LFLAGS_END` parameter.
+Note: linking may fail on the previous command if your linker does not automatically add the `pthread` library. If you encounter `undefined reference` errors, please modify the `core_portme.mak` file for your platform, (e.g. `linux/core_portme.mak`) and add `-pthread` to the `LFLAGS_END` parameter.
 
 # Run Parameters for the Benchmark Executable
 CoreMark's executable takes several parameters as follows (but only if `main()` accepts arguments):
@@ -394,7 +394,7 @@ Many thanks to all of the individuals who helped with the development or testing
 * Shumpei Kawasaki, RENESAS
 
 # Legal
-Please refer to LICENSE.md in this reposity for a description of your rights to use this code.
+Please refer to LICENSE.md in this repository for a description of your rights to use this code.
 
 # Copyright
 Copyright © 2009 EEMBC All rights reserved. 
