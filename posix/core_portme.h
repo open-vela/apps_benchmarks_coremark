@@ -302,12 +302,23 @@ void portable_init(core_portable *p, int *argc, char *argv[]);
 void portable_fini(core_portable *p);
 
 #if (SEED_METHOD == SEED_VOLATILE)
+#ifndef VALIDATION_RUN
+#define VALIDATION_RUN 0
+#endif
+#ifndef PERFORMANCE_RUN
+#define PERFORMANCE_RUN 0
+#endif
+#ifndef PROFILE_RUN
+#define PROFILE_RUN 0
+#endif
 #if (VALIDATION_RUN || PERFORMANCE_RUN || PROFILE_RUN)
 #define RUN_TYPE_FLAG 1
 #else
 #if (TOTAL_DATA_SIZE == 1200)
+#undef PROFILE_RUN
 #define PROFILE_RUN 1
 #else
+#undef PERFORMANCE_RUN
 #define PERFORMANCE_RUN 1
 #endif
 #endif
