@@ -589,7 +589,7 @@ core_list_mergesort(list_head *list, list_cmp cmp, core_results *res)
         /* Otherwise repeat, merging lists twice the size */
         insize *= 2;
     }
-#if COMPILER_REQUIRES_SORT_RETURN
+#if defined(COMPILER_REQUIRES_SORT_RETURN) && COMPILER_REQUIRES_SORT_RETURN
     return list;
 #endif
 }
